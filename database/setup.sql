@@ -17,7 +17,7 @@ CREATE TABLE curso (
   cod_curso SERIAL PRIMARY KEY,
   nome varchar(15) not NULL,
   carga_horaria varchar(5) NOT NULL,
-  data DATE not NULL
+  data_cadastro DATE not NULL
 );
 
 CREATE TABLE matricula (
