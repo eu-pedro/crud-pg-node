@@ -1,5 +1,6 @@
 INSERT INTO
   aluno (
+    cod_curso,
     nome,
     cpf,
     telefone,
@@ -12,6 +13,7 @@ INSERT INTO
   )
 VALUES
   (
+    1,
     'Pedro',
     '61463268912',
     '98984857621',

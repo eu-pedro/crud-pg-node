@@ -2,6 +2,8 @@ CREATE DATABASE unidit;
 
 CREATE TABLE aluno (
   cod_aluno SERIAL PRIMARY KEY,
+  cod_curso integer not null,
+  foreign key(cod_curso) references curso(cod_curso),
   nome varchar(30) NOT NULL,
   cpf varchar(11) NOT NULL,
   telefone varchar(11) NOT NULL,
@@ -20,10 +22,4 @@ CREATE TABLE curso (
   data_cadastro DATE not NULL
 );
 
-CREATE TABLE matricula (
-  cod_matricula SERIAL PRIMARY KEY,
-  cod_aluno integer not NULL,
-  foreign key(cod_aluno) references aluno(cod_aluno),
-  cod_curso integer not NULL,
-  foreign key(cod_aluno) references curso(cod_curso)
-);
+
