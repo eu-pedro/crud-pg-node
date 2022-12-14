@@ -4,7 +4,7 @@ const client = new Client({
   // host: 'my.database-server.com',
   // port: 5334,
   user: 'postgres',
-  password: '0000',
+  password: '1234',
   database: 'unidit'
 });
 

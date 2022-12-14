@@ -28,27 +28,5 @@ VALUES
 INSERT INTO
   curso (nome, carga_horaria, data_cadastro)
 VALUES
-  ('Medicina', '160', '2022/04/22');
+  ('Direito', '160', '2022/04/22');
 
-
-
-INSERT INTO
-  matricula (cod_aluno, cod_curso)
-VALUES
-  (
-    (
-      select
-        cod_aluno
-      from
-        aluno
-      limit
-        1
-    ), (
-      select
-        cod_curso
-      from
-        curso
-      limit
-        1
-    )
-  );
