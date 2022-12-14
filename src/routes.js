@@ -10,7 +10,10 @@ routes
     .get('/aluno', AlunoController.index)
     .post('/aluno', AlunoController.create)
     .put('/aluno/:id', AlunoController.update)
-    // curso 
+    .delete('/aluno/:id', AlunoController.delete)
+    // curso
     .get('/curso', CursoController.index)
+    .post('/curso', CursoController.create)
+    .put('/curso/:id', CursoController.update)
 
 module.exports = routes;

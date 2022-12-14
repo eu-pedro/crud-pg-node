@@ -1,8 +1,12 @@
 
 const express = require('express')
 const app = express();
+const client = require('./database/config.js')
+client.connect();
 
 const routes = require('./routes')
+
+
 
 
 
