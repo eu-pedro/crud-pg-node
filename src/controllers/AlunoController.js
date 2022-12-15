@@ -11,7 +11,7 @@ module.exports = {
 
 
       if(cod_curso){
-        query = client.query(`select aluno.nome, curso.nome from aluno inner join curso on aluno.cod_curso = curso.cod_curso where curso.cod_curso = '${cod_curso}'`)
+        query = client.query(`select aluno.cod_aluno, aluno.nome from aluno inner join curso on curso.cod_curso = aluno.cod_curso where curso.cod_curso = '${cod_curso}'`)
 
       }
       const results = await query;
