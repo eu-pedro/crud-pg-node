@@ -24,7 +24,7 @@ module.exports = {
 
       const query = await client.query(`INSERT INTO curso(nome, carga_horaria, data_cadastro) VALUES('${nome}', '${carga_horaria}', '${data_cadastro}')`)
 
-      return res.status(200).json(query.rows).send('dados criados com sucesso!')
+      return res.status(200).json(query.rows)
 
     } catch (error) {
       console.log(error)
@@ -43,12 +43,13 @@ module.exports = {
       const { nome, carga_horaria, data_cadastro } = req.body;
       const { id } = req.params;
 
-      console.log(id)
 
 
-      const query = await client.query(`UPDATE aluno SET nome = '${nome}', carga_horaria = '${carga_horaria}', data_cadastro = ${data_cadastro} WHERE 'cod_curso' = '${id}'`)
 
-      return res.status(200).json(query.rows).send('dados atualizados com sucesso!')
+      const query = await client.query(`UPDATE curso SET nome = '${nome}', carga_horaria = '${carga_horaria}', data_cadastro = '${data_cadastro}' WHERE cod_curso = '${id}'`)
+
+      return res.status(200).json(query.rows)
+
     } catch (error) {
       console.log(error)
       return res.status(500).json(error.message)
@@ -62,7 +63,7 @@ module.exports = {
 
 
       const query = await client.query(`DELETE FROM curso WHERE 'cod_aluno' = ${id}`)
-      return res.status(200).json(query.rows).send('dados deletados com sucesso!')
+      return res.status(200).json(query.rows)
 
     } catch (error) {
       console.log(error)
