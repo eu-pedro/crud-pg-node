@@ -15,5 +15,6 @@ routes
     .get('/curso', CursoController.index)
     .post('/curso', CursoController.create)
     .put('/curso/:id', CursoController.update)
+    .delete('/curso/:id', CursoController.delete)
 
 module.exports = routes;

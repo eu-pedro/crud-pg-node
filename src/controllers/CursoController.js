@@ -62,7 +62,7 @@ module.exports = {
       const { id } = req.params;
 
 
-      const query = await client.query(`DELETE FROM curso WHERE 'cod_aluno' = ${id}`)
+      const query = await client.query(`DELETE FROM curso WHERE cod_curso = ${id}`)
       return res.status(200).json(query.rows)
 
     } catch (error) {
