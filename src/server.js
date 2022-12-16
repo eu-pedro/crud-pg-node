@@ -15,18 +15,11 @@ const curso = [
     {"nome_curso": "Administração", "carga_horaria": "210", "data_cadastro": "15/12/2022"}
 ];
 
-const aluno = [
-    {""}
-
-];
-
 const headingColumnNamesCurso = [
     "Nome do Curso",
     "Carga Horaria",
     "Data Cadastro"
 ];
-
-
 
 let headingColumnIndex = 1;
 headingColumnNamesCurso.forEach(heading => {
@@ -42,9 +35,115 @@ curso.forEach(record => {
     rowIndex++
 })
 
+const aluno = [
+    {
+        "nome": "pedro",
+        "cpf": "61463268912",
+        "telefone": "98984857621",
+        "email": "pedro@gmail.com",
+        "cep": "65021854",
+        "rua": "rua 300",
+        "bairro": "cohatrac",
+        "numero_casa": "casa 08",
+        "uf": "MA"
+    },
+    {
+        "nome": "fabio",
+        "cpf": "61169968822",
+        "telefone": "98985663214",
+        "email": "fabio123@gmail.com",
+        "cep": "65014852",
+        "rua": "rua 200",
+        "bairro": "cohama",
+        "numero_casa": "39",
+        "uf": "MA"
+    },
+    {
+        "nome": "henrique",
+        "cpf": "61463262577",
+        "telefone": "98985625324",
+        "email": "henrique@gmail.com",
+        "cep": "65014589",
+        "rua": "rua D",
+        "bairro": "maiobao",
+        "numero_casa": "63",
+        "uf": "MA"
+    },
+    {
+        "nome": "junior",
+        "cpf": "61563961422",
+        "telefone": "98984225147",
+        "email": "junior@gmail.com",
+        "cep": "65052145",
+        "rua": "rua G",
+        "bairro": "vila lobao",
+        "numero_casa": "14",
+        "uf": "MA"
+    },
+    {
+        "nome": "lucas",
+        "cpf": "64769862512",
+        "telefone": "98982653145",
+        "email": "lucas@gmail.com",
+        "cep": "65125369",
+        "rua": "rua J",
+        "bairro": "areinha",
+        "numero_casa": "88",
+        "uf": "MA"
+    },
+    {
+        "nome": "bruno",
+        "cpf": "62561463512",
+        "telefone": "98999651234",
+        "email": "bruno@gmail.com",
+        "cep": "65078142",
+        "rua": "rua veneza",
+        "bairro": "anjo da guarda",
+        "numero_casa": "141",
+        "uf": "MA"
+    },
+    {
+        "nome": "marcelo",
+        "cpf": "62361469936",
+        "telefone": "98983524163",
+        "email": "marcelo@gmail.com",
+        "cep": "65145285",
+        "rua": "rua do fio",
+        "bairro": "vila nova",
+        "numero_casa": "55",
+        "uf": "MA"
+    }
+];
+
+const headingColumnNamesAluno = [
+    "Nome do Aluno",
+    "Cpf",
+    "Telefone",
+    "Email",
+    "CEP",
+    "Rua",
+    "Bairro",
+    "Numero da Casa",
+    "UF"
+];
+
+let headingColumnIndexAluno = 6;
+headingColumnNamesAluno.forEach(heading => {
+    ws.cell(1, headingColumnIndexAluno++).string(heading)
+});
+
+let rowIndexAluno = 2;
+aluno.forEach(record => {
+    let columnIndexAluno = 6;
+    Object.keys(record).forEach(columnName => {
+        ws.cell(rowIndexAluno, columnIndexAluno++).string(record[columnName])
+    })
+    rowIndexAluno++
+})
+
 wb.write('arquivo.xlsx')
 
-
+// Fim configurações para exportar para planilha
 
 client.connect();
 
