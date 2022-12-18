@@ -1,7 +1,7 @@
 const client = require('../database/config')
 
 module.exports = {
-  async index(req, res){
+  async index(req, res, next){
     try {
 
 
@@ -11,12 +11,10 @@ module.exports = {
       return res.status(200).json(query.rows)
 
     } catch (error) {
-      console.log(error)
-
-      return res.status(200).json(error.message)
+      next(error)
     }
   },
-  async create(req, res){
+  async create(req, res, next){
     try {
 
       const { nome, carga_horaria, data_cadastro } = req.body;
@@ -24,50 +22,36 @@ module.exports = {
 
       const query = await client.query(`INSERT INTO curso(nome, carga_horaria, data_cadastro) VALUES('${nome}', '${carga_horaria}', '${data_cadastro}')`)
 
-      return res.status(200).json(query.rows)
+      return res.status(201).json(query.rows)
 
     } catch (error) {
-      console.log(error)
-      client.end((err) => {
-        console.log('client has disconnected')
-        if (err) {
-          console.log('error during disconnection', err.stack)
-        }
-      })
-      return res.status(500).json(error.message)
+      next(error)
     }
   },
-  async update(req, res){
+  async update(req, res, next){
     try {
 
       const { nome, carga_horaria, data_cadastro } = req.body;
       const { id } = req.params;
-
-
-
 
       const query = await client.query(`UPDATE curso SET nome = '${nome}', carga_horaria = '${carga_horaria}', data_cadastro = '${data_cadastro}' WHERE cod_curso = '${id}'`)
 
       return res.status(200).json(query.rows)
 
     } catch (error) {
-      console.log(error)
-      return res.status(500).json(error.message)
+      next(error)
     }
   },
-  async delete(req, res){
+  async delete(req, res, next){
     try {
-
 
       const { id } = req.params;
 
-
       const query = await client.query(`DELETE FROM curso WHERE cod_curso = ${id}`)
-      return res.status(200).json(query.rows)
+      return res.status(204).json(query.rows)
 
     } catch (error) {
-      console.log(error)
-      return res.status(500).json(error.message)
+      next(error)
     }
   }
 }

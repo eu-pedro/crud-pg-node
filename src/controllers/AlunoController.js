@@ -6,7 +6,7 @@ module.exports = {
       const { cod_curso } = req.query;
 
       if(cod_curso > 3){
-        return res.send('Curso não encontrado!')
+        return next()
       }
 
       let query = client.query("SELECT * FROM aluno");
@@ -19,7 +19,7 @@ module.exports = {
       const results = await query;
 
 
-      return res.json(results.rows);
+      return res.status(200).json(results.rows);
     } catch (error) {
       next(error);
     }
@@ -43,7 +43,7 @@ module.exports = {
         `INSERT INTO aluno(cod_curso, nome, cpf, telefone, email,cep, rua, bairro, numero_casa, uf) VALUES('${cod_curso}','${nome}', '${cpf}', '${telefone}', '${email}', '${cep}', '${rua}', '${bairro}', '${numero_casa}', '${uf}')`
       );
 
-      return res.status(200).json(query.rows);
+      return res.status(201).json(query.rows);
     } catch (error) {
       next(error);
     }
@@ -82,7 +82,7 @@ module.exports = {
       const query = await client.query(
         `DELETE FROM aluno WHERE cod_aluno = ${id}`
       );
-      return res.status(200).json(query.rows);
+      return res.status(204).json(query.rows);
     } catch (error) {
       next(error);
     }
