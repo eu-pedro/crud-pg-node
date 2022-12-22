@@ -6,12 +6,13 @@ const routes = require('./routes')
 
 
 const cors = require('cors');
+app.use(cors());
 app.use((req, res, next) => {
 	//Qual site tem permissão de realizar a conexão, no exemplo abaixo está o "*" indicando que qualquer site pode fazer a conexão
     res.header("Access-Control-Allow-Origin", "*");
 	//Quais são os métodos que a conexão pode realizar na API
     res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
-    app.use(cors());
+
     next();
 });
 
@@ -80,7 +81,7 @@ curso.forEach(record => {
 
 
 const aluno = [
-    {   
+    {
         "id": '1',
         "nome": "pedro",
         "cpf": "61463268912",
@@ -92,7 +93,7 @@ const aluno = [
         "numero_casa": "casa 08",
         "uf": "MA"
     },
-    {   
+    {
         "id": '2',
         "nome": "fabio",
         "cpf": "61169968822",
@@ -104,7 +105,7 @@ const aluno = [
         "numero_casa": "39",
         "uf": "MA"
     },
-    {   
+    {
         "id": '3',
         "nome": "henrique",
         "cpf": "61463262577",
@@ -116,7 +117,7 @@ const aluno = [
         "numero_casa": "63",
         "uf": "MA"
     },
-    {   
+    {
         "id": '4',
         "nome": "junior",
         "cpf": "61563961422",
@@ -128,7 +129,7 @@ const aluno = [
         "numero_casa": "14",
         "uf": "MA"
     },
-    {   
+    {
         "id": '5',
         "nome": "lucas",
         "cpf": "64769862512",
@@ -140,7 +141,7 @@ const aluno = [
         "numero_casa": "88",
         "uf": "MA"
     },
-    {   
+    {
         "id": '6',
         "nome": "bruno",
         "cpf": "62561463512",
@@ -152,7 +153,7 @@ const aluno = [
         "numero_casa": "141",
         "uf": "MA"
     },
-    {   
+    {
         "id": '7',
         "nome": "marcelo",
         "cpf": "62361469936",

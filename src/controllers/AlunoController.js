@@ -4,7 +4,7 @@ module.exports = {
   async index(req, res, next) {
     try {
       const { cod_curso } = req.query;
-
+      console.log(cod_curso)
       if(cod_curso > 3){
         return next()
       }
