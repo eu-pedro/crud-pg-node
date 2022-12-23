@@ -4,12 +4,15 @@ module.exports = {
   async index(req, res, next) {
     try {
       const { cod_curso } = req.query;
-      console.log(cod_curso)
-      if(cod_curso > 3){
-        return next()
-      }
+      const { cod_aluno } = req.query;
 
       let query = client.query("SELECT * FROM aluno");
+      
+      if(cod_aluno) {
+        query = client.query(`SELECT * FROM aluno WHERE cod_aluno = '${cod_aluno}'`)
+      }
+
+      
 
       if (cod_curso) {
         query = client.query(
